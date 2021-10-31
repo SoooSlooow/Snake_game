@@ -45,7 +45,31 @@ def game():
 
     while not game_over:
 
-
+        while not game_begin:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    game_begin = True
+                    game_over = True
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_1:
+                        fps = 10
+                        game_begin = True
+                    if event.key == pygame.K_2:
+                        fps = 20
+                        game_begin = True
+                    if event.key == pygame.K_3:
+                        fps = 30
+                        game_begin = True
+                display.fill(yellow_color)
+                display.blit(font.render("Выберите уровень сложности:",
+                                         True, red_color), [display_width / 3.5, display_height / 2.7])
+                display.blit(font.render("1 - легкий",
+                                         True, red_color), [display_width / 2.5, display_height / 2.3])
+                display.blit(font.render("2 - средний",
+                                         True, red_color), [display_width / 2.5, display_height / 2.05])
+                display.blit(font.render("3 - сложный",
+                                         True, red_color), [display_width / 2.5, display_height / 1.82])
+                pygame.display.update()
 
         while game_close == True:
             display.fill(yellow_color)
